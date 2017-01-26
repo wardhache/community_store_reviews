@@ -30,8 +30,8 @@ use Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Review\ReviewRemin
 class controller extends Package{
 
   protected $pkgHandle = 'community_store_reviews';
-  protected $appVersionRequired = '5.7.5.8';
-  protected $pkgVersion = '0.7.7';
+  protected $appVersionRequired = '5.7.5';
+  protected $pkgVersion = '0.9.0';
 
   public function getPackageDescription(){
     return t("Boost your store and ask customer feedback.");
