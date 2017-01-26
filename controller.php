@@ -1,5 +1,13 @@
 <?php
 namespace Concrete\Package\CommunityStoreReviews;
+/**
+ * Community Store Reviews
+ *
+ * @author Ward Haché <wardhache@gmail.be>
+ * @version 0.9.0
+ * @package community_store_reviews
+ * @github Haxe93
+ */
 
 use Package;
 use Page;
