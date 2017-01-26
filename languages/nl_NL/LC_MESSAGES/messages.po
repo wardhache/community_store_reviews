@@ -1,0 +1,743 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: community_store_reviews\n"
+"POT-Creation-Date: 2017-01-26 12:24+0100\n"
+"PO-Revision-Date: 2017-01-26 13:44+0100\n"
+"Language-Team: Haxe93\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: t\n"
+"Last-Translator: \n"
+"Language: nl\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: blocks/community_reviews/controller.php:30
+msgid "Add Reviews for Community Store"
+msgstr "Voegt Beoordelingen toe voor Community Store"
+
+#: blocks/community_reviews/controller.php:35
+#: blocks/community_reviews/form.php:8 blocks/community_reviews/view.php:7
+msgid "Reviews"
+msgstr "Beoordelingen"
+
+#: blocks/community_reviews/controller.php:106
+#: controllers/single_page/reviews.php:66
+msgid "Write your own review"
+msgstr "Schrijf een beoordeling"
+
+#: blocks/community_reviews/controller.php:108
+#: controllers/single_page/reviews.php:68
+msgid "Submit"
+msgstr ""
+
+#: blocks/community_reviews/controller.php:134
+msgid "A page must be selected"
+msgstr ""
+
+#: blocks/community_reviews/controller.php:138
+msgid "Number of Products must be a whole number"
+msgstr ""
+
+#: blocks/community_reviews/controller.php:167
+#: controllers/single_page/reviews.php:105
+msgid "Thanks!"
+msgstr ""
+
+#: blocks/community_reviews/controller.php:174
+#: controllers/single_page/reviews.php:119
+msgid ""
+"Incorrect image validation code. Please check the image and re-enter the "
+"letters or numbers as necessary."
+msgstr ""
+
+#: blocks/community_reviews/controller.php:187
+#: blocks/community_reviews/view.php:108
+#: controllers/single_page/reviews.php:132 mail/new_review_notification.php:30
+#: single_pages/dashboard/store/reviews.php:49
+#: single_pages/dashboard/store/reviews.php:163 single_pages/reviews.php:86
+msgid "Nickname"
+msgstr "Schermnaam"
+
+#: blocks/community_reviews/controller.php:187
+#: blocks/community_reviews/controller.php:190
+#: controllers/single_page/reviews.php:132
+#: controllers/single_page/reviews.php:135
+#, php-format
+msgid "%s is required"
+msgstr ""
+
+#: blocks/community_reviews/controller.php:190
+#: controllers/single_page/reviews.php:135
+msgid "Title of the Review"
+msgstr "Titel van de beoordeling"
+
+#: blocks/community_reviews/controller.php:193
+#: controllers/single_page/reviews.php:138
+msgid "You have to fill in all the ratings"
+msgstr "U moet alle waarderingen invullen"
+
+#: blocks/community_reviews/form.php:11
+msgid "List Reviews of Product(s)"
+msgstr "Lijst van Beoordelingen van Product(en)"
+
+#: blocks/community_reviews/form.php:13
+msgid "All"
+msgstr ""
+
+#: blocks/community_reviews/form.php:14
+msgid "Under current product"
+msgstr "Onder huidig product"
+
+#: blocks/community_reviews/form.php:15
+msgid "Under a specified product"
+msgstr "Onder een specifiek product"
+
+#: blocks/community_reviews/form.php:16
+msgid "Under current location"
+msgstr "Onder huidige locatie"
+
+#: blocks/community_reviews/form.php:17
+msgid "Under a specified location"
+msgstr "Onder een specifieke locatie"
+
+#: blocks/community_reviews/form.php:31
+msgid "Sort Order"
+msgstr ""
+
+#: blocks/community_reviews/form.php:32
+msgid "Alphabetical"
+msgstr ""
+
+#: blocks/community_reviews/form.php:32
+msgid "Date Ascending"
+msgstr ""
+
+#: blocks/community_reviews/form.php:32
+msgid "Date Descending"
+msgstr ""
+
+#: blocks/community_reviews/form.php:32
+msgid "Rating Ascending"
+msgstr "Waardering Oplopend"
+
+#: blocks/community_reviews/form.php:32
+msgid "Rating Descending"
+msgstr "Waardering Aflopend"
+
+#: blocks/community_reviews/form.php:37
+#: single_pages/dashboard/store/settings/reviews.php:13
+msgid "Review Form"
+msgstr "Beoordelingsformulier"
+
+#: blocks/community_reviews/form.php:41
+msgid "Show Form"
+msgstr "Toon formulier"
+
+#: blocks/community_reviews/form.php:44
+msgid ""
+"Review Form will only be displayed when the PageID is linked to a product."
+msgstr ""
+"Beoordelingsformulier zal enkel getoond worden wanneer de pagina ID gelinkt "
+"is met een product."
+
+#: blocks/community_reviews/form.php:45
+msgid "Otherwise the customers will not be able to add a review."
+msgstr "Anders kunnen de klanten geen beoordeling geven."
+
+#: blocks/community_reviews/form.php:53
+msgid "Pagination and Display Options"
+msgstr ""
+
+#: blocks/community_reviews/form.php:56 mail/new_review_notification.php:50
+#: single_pages/dashboard/store/reviews.php:65
+#: single_pages/dashboard/store/settings/reviews.php:172
+msgid "Title"
+msgstr ""
+
+#: blocks/community_reviews/form.php:61
+msgid "Number of Reviews to Display"
+msgstr "Aantal beoordelingen tonen"
+
+#: blocks/community_reviews/form.php:62
+msgid "leave blank or 0 to list all matching reviews"
+msgstr "Laat leeg of 0 om alle bijhorende beoordelingen te tonen"
+
+#: blocks/community_reviews/form.php:68
+msgid ""
+"Display pagination interface if more reviews are available than are "
+"displayed."
+msgstr "Toon paginatie indien meer beoordelingen beschikbaar zijn"
+
+#: blocks/community_reviews/form.php:73
+msgid "Reviews per Row"
+msgstr "Beoordelingen per rij"
+
+#: blocks/community_reviews/view.php:1
+msgid "Access Denied."
+msgstr ""
+
+#: blocks/community_reviews/view.php:33
+msgid "Posted on: "
+msgstr "Geplaatst op:"
+
+#: blocks/community_reviews/view.php:38
+msgid "For: "
+msgstr "Voor:"
+
+#: blocks/community_reviews/view.php:75
+msgid "No reviews found..."
+msgstr "Geen beoordelingen gevonden..."
+
+#: blocks/community_reviews/view.php:112 single_pages/reviews.php:90
+msgid "Title of Review"
+msgstr "Titel van beoordeling"
+
+#: blocks/community_reviews/view.php:124 mail/new_review_notification.php:21
+#: single_pages/dashboard/store/reviews.php:68 single_pages/reviews.php:12
+#: single_pages/reviews.php:102
+msgid "Review"
+msgstr "Beoordeling"
+
+#: blocks/community_reviews/view.php:129 single_pages/reviews.php:107
+msgid ""
+"Please type the letters an numers shown in the image. Click the image to see "
+"another Captha."
+msgstr ""
+
+#: controller.php:29
+msgid "Boost your store and ask customer feedback."
+msgstr ""
+
+#: controller.php:33
+msgid "Community Store Reviews"
+msgstr ""
+
+#: controller.php:67
+msgid "Pending"
+msgstr ""
+
+#: controller.php:68 single_pages/dashboard/store/reports/reviews.php:32
+#: single_pages/dashboard/store/reports/reviews.php:74
+#: single_pages/dashboard/store/reports/reviews.php:116
+msgid "Approved"
+msgstr ""
+
+#: controller.php:69
+msgid "Not Approved"
+msgstr "Niet Goedgekeurd"
+
+#: controller.php:77 single_pages/dashboard/store/settings/reviews.php:22
+msgid "General"
+msgstr "Algemeen"
+
+#: controllers/single_page/dashboard/store/reviews.php:52
+msgid "Review #"
+msgstr "Beoordeling #"
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:52
+msgid "Settings Saved"
+msgstr ""
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:150
+msgid "You must have at least one Review Status."
+msgstr "U moet ten minste 1 Beoordelingsstatus hebben."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:154
+msgid "You must have at least one Review Rating."
+msgstr "U moet ten minste 1 Beoordelingswaardering hebben."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:158
+msgid "All the ratings must have a name"
+msgstr "Al de waarderingen moeten een naam hebben."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:167
+msgid "All the ratings must have a handle"
+msgstr "Al de waarderingen moeten een handvat hebben."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:171
+msgid "Only letters, numbers and underscore is allowed for a rating handle."
+msgstr ""
+"Alleen letters, nummers en underscores zijn toegelaten voor een handvat."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:179
+msgid "You must assing a minimum average rating for auto approval"
+msgstr ""
+"U moet een minimum gemiddelde waardering instellen voor automatisch "
+"goedkeuren."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:182
+msgid "The minimum average rating must be between 0 &amp; 100"
+msgstr "De minimum gemiddelde waardering moet tussen 0 &amp; 100 liggen."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:189
+msgid "You must set the days after order creation for the review reminders."
+msgstr ""
+"U moet de dagen na creatie bestelling instellen voor de beoordeling "
+"herinneringen."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:192
+msgid "You must set the order status for the review reminders."
+msgstr ""
+"U moet een bestellingsstatus meegeven voor de beoordeling herinneringen."
+
+#: controllers/single_page/dashboard/store/settings/reviews.php:195
+msgid "You must set the from e-mail for the review reminders."
+msgstr "U moet een e-mail instellen voor de beoordeling herinneringen."
+
+#: controllers/single_page/reviews.php:61
+msgid "You already submitted a review of this product."
+msgstr "U heeft reeds een beoordeling ingediend voor dit product."
+
+#: controllers/single_page/reviews.php:81
+msgid "Something went wrong..."
+msgstr "Iets ging verkeerd..."
+
+#: jobs/community_store_review_reminder.php:17
+msgid "Community Store Review Reminder"
+msgstr "Community Store Beoordeling Herinnering"
+
+#: jobs/community_store_review_reminder.php:22
+msgid "Sends a mail to customers for reviewing their last order."
+msgstr ""
+"Verstuurt een mail naar klanten voor hun laatste bestelling te beoordelen."
+
+#: mail/new_review_notification.php:6
+#, php-format
+msgid "New Review Notification on %s (%s)"
+msgstr "Nieuwe Beoordeling Notificatie op %s (%s)"
+
+#: mail/new_review_notification.php:19
+msgid "A review has been submitted"
+msgstr "Een beoordeling is ingediend."
+
+#: mail/new_review_notification.php:22
+msgid "Date submitted"
+msgstr "Datum ingediend"
+
+#: mail/new_review_notification.php:27
+msgid "Details"
+msgstr ""
+
+#: mail/new_review_notification.php:54
+msgid "Comment"
+msgstr "Commentaar"
+
+#: mail/new_review_notification.php:58
+#: single_pages/dashboard/store/reviews.php:165
+msgid "Status"
+msgstr ""
+
+#: mail/new_review_notification.php:67
+msgid "Click on the link to view this review"
+msgstr "Klik op de link om de beoordeling te bekijken."
+
+#: mail/new_review_notification.php:89
+msgid "Review #:"
+msgstr "Beoordeling #:"
+
+#: mail/new_review_notification.php:90
+msgid "A new review has been submitted on your website"
+msgstr "Een nieuwe beoordeling is ingediend op uw website."
+
+#: mail/review_reminder.php:7
+#, php-format
+msgid "%s: Submit a review for order #%s"
+msgstr "%s: Dien een beoordeling in voor bestelling #%s"
+
+#: mail/review_reminder.php:60
+msgid "Review Reminder for Order #:"
+msgstr "Beoordeling Herinnering voor Bestelling #:"
+
+#: single_pages/dashboard/store/reports/reviews.php:10
+msgid "Today's Reviews"
+msgstr "Beoordelingen Vandaag"
+
+#: single_pages/dashboard/store/reports/reviews.php:16
+#: single_pages/dashboard/store/reports/reviews.php:58
+#: single_pages/dashboard/store/reports/reviews.php:100
+msgid "Total"
+msgstr "Totaal"
+
+#: single_pages/dashboard/store/reports/reviews.php:20
+#: single_pages/dashboard/store/reports/reviews.php:62
+#: single_pages/dashboard/store/reports/reviews.php:104
+msgid "No reviews found"
+msgstr "Geen beoordelingen gevonden"
+
+#: single_pages/dashboard/store/reports/reviews.php:36
+#: single_pages/dashboard/store/reports/reviews.php:78
+#: single_pages/dashboard/store/reports/reviews.php:120
+msgid "No approved reviews found"
+msgstr "Geen goedgekeurde beoordelingen gevonden"
+
+#: single_pages/dashboard/store/reports/reviews.php:52
+msgid "Past 30 Days"
+msgstr "Laatste 30 dagen"
+
+#: single_pages/dashboard/store/reports/reviews.php:94
+msgid "Year To Date"
+msgstr "Huidig jaar"
+
+#: single_pages/dashboard/store/reports/reviews.php:137
+msgid "View Reviews by Date"
+msgstr "Bekijk beoordelingen op datum"
+
+#: single_pages/dashboard/store/reports/reviews.php:152
+msgid "Summary"
+msgstr "Overzicht"
+
+#: single_pages/dashboard/store/reports/reviews.php:156
+#: single_pages/dashboard/store/reports/reviews.php:192
+msgid "Total Reviews"
+msgstr "Totaal Beoordelingen"
+
+#: single_pages/dashboard/store/reports/reviews.php:157
+#: single_pages/dashboard/store/reports/reviews.php:193
+msgid "Rating Total Reviews"
+msgstr "Waardering Totaal Beoordelingen"
+
+#: single_pages/dashboard/store/reports/reviews.php:158
+#: single_pages/dashboard/store/reports/reviews.php:194
+msgid "Approved Reviews"
+msgstr "Goedgekeurde Beoordelingen"
+
+#: single_pages/dashboard/store/reports/reviews.php:159
+#: single_pages/dashboard/store/reports/reviews.php:195
+msgid "Rating Approved Reviews"
+msgstr "Waardering Goedgekeurde Beoordelingen"
+
+#: single_pages/dashboard/store/reports/reviews.php:187
+msgid "View Reviews by Product"
+msgstr "Bekijk Beoordelingen op Product"
+
+#: single_pages/dashboard/store/reports/reviews.php:191
+#: single_pages/dashboard/store/reviews.php:162
+msgid "Product"
+msgstr ""
+
+#: single_pages/dashboard/store/reviews.php:14
+msgid "Approve Review"
+msgstr "Goedkeuren"
+
+#: single_pages/dashboard/store/reviews.php:17
+msgid "Decline Review"
+msgstr "Afkeuren"
+
+#: single_pages/dashboard/store/reviews.php:24
+msgid "Review placed"
+msgstr "Beoordeling geplaatst"
+
+#: single_pages/dashboard/store/reviews.php:45
+msgid "Review Details"
+msgstr "Beoordeling Details"
+
+#: single_pages/dashboard/store/reviews.php:59
+msgid "Customer:"
+msgstr "Klant:"
+
+#: single_pages/dashboard/store/reviews.php:96
+msgid "On Sale: "
+msgstr "In Verkoop:"
+
+#: single_pages/dashboard/store/reviews.php:97
+msgid "was"
+msgstr ""
+
+#: single_pages/dashboard/store/reviews.php:116
+msgid "View Product"
+msgstr "Bekijk Product"
+
+#: single_pages/dashboard/store/reviews.php:125
+msgid "View All Reviews"
+msgstr "Bekijk Alle Beoordelingen"
+
+#: single_pages/dashboard/store/reviews.php:137
+msgid "All Statuses"
+msgstr "Alle Statussen"
+
+#: single_pages/dashboard/store/reviews.php:149
+msgid "Search Reviews"
+msgstr "Zoek Beoordelingen"
+
+#: single_pages/dashboard/store/reviews.php:152
+msgid "Search"
+msgstr "Zoek"
+
+#: single_pages/dashboard/store/reviews.php:160
+#, php-format
+msgid "Review %s"
+msgstr "Beoordeling %s"
+
+#: single_pages/dashboard/store/reviews.php:161
+msgid "Date"
+msgstr "Datum"
+
+#: single_pages/dashboard/store/reviews.php:164
+msgid "Avg. Rating"
+msgstr "Gem. Waardering"
+
+#: single_pages/dashboard/store/reviews.php:166
+msgid "Actions"
+msgstr ""
+
+#: single_pages/dashboard/store/reviews.php:167
+#: single_pages/dashboard/store/reviews.php:215
+msgid "View"
+msgstr ""
+
+#: single_pages/dashboard/store/reviews.php:183
+msgid "Not found"
+msgstr "Niet gevonden"
+
+#: single_pages/dashboard/store/reviews.php:211
+msgid "Approve"
+msgstr "Goedkeuren"
+
+#: single_pages/dashboard/store/reviews.php:212
+msgid "Decline"
+msgstr "Afkeuren"
+
+#: single_pages/dashboard/store/reviews.php:248
+msgid "The status of the review could not be changed."
+msgstr "De status van de beoordeling kon niet gewijzigd worden."
+
+#: single_pages/dashboard/store/settings/reviews.php:10
+#: single_pages/dashboard/store/settings/reviews.php:19
+msgid "Ratings"
+msgstr "Waarderingen"
+
+#: single_pages/dashboard/store/settings/reviews.php:11
+#: single_pages/dashboard/store/settings/reviews.php:89
+msgid "Review Statuses"
+msgstr "Beoordeling Statussen"
+
+#: single_pages/dashboard/store/settings/reviews.php:12
+#: single_pages/dashboard/store/settings/reviews.php:132
+msgid "Auto Approval"
+msgstr "Automatisch Goedkeuren"
+
+#: single_pages/dashboard/store/settings/reviews.php:14
+msgid "Reminder"
+msgstr "Herinneringen"
+
+#: single_pages/dashboard/store/settings/reviews.php:21
+#, php-format
+msgid ""
+"Standard rating %sThis rating will automatically be used for calculations "
+"and the review reminder landings page%s"
+msgstr ""
+"Standaard waardering %sDeze waardering zal automatisch gebruikt worden voor "
+"berekeningen een de beoordeling herinnering landingspagina%s"
+
+#: single_pages/dashboard/store/settings/reviews.php:27
+msgid "Custom Ratings"
+msgstr "Extra Waarderingen"
+
+#: single_pages/dashboard/store/settings/reviews.php:34
+msgid "Handle"
+msgstr "Handvat"
+
+#: single_pages/dashboard/store/settings/reviews.php:35
+#: single_pages/dashboard/store/settings/reviews.php:97
+msgid "Display Name"
+msgstr "Schermnaam"
+
+#: single_pages/dashboard/store/settings/reviews.php:52
+msgid "No custom ratings found..."
+msgstr "Geen extra waarderingen gevonden..."
+
+#: single_pages/dashboard/store/settings/reviews.php:86
+msgid "Add Rating"
+msgstr "Waardering toevoegen"
+
+#: single_pages/dashboard/store/settings/reviews.php:98
+msgid "Show Frontend"
+msgstr "Toon op voorkant"
+
+#: single_pages/dashboard/store/settings/reviews.php:126
+msgid "No Review Statuses are available"
+msgstr "Er zijn geen Beoordeling Statussen beschikbaar"
+
+#: single_pages/dashboard/store/settings/reviews.php:135
+msgid "Enable Auto Approve?"
+msgstr "Automatisch goedkeuren inschakelen?"
+
+#: single_pages/dashboard/store/settings/reviews.php:136
+msgid "No, I will manually approve or decline every review."
+msgstr "Neen, ik ga elke beoordeling handmatig goed- of afkeuren."
+
+#: single_pages/dashboard/store/settings/reviews.php:136
+msgid ""
+"Yes, every review equal or higher than the minimum average rating should be "
+"approved automatically."
+msgstr ""
+"Ja, elke beoordeling hoger dan de minimum gemiddelde waardering moet "
+"automatisch worden goedgekeurd."
+
+#: single_pages/dashboard/store/settings/reviews.php:140
+#, php-format
+msgid "Minimum Average Rating %sBetween 1 &amp; 100&#37; %s"
+msgstr "Minimum Gemiddelde Waardering %sTussen 1 &amp; 100&#37; %s"
+
+#: single_pages/dashboard/store/settings/reviews.php:145
+msgid "Review Form Settings"
+msgstr "Beoordeling Formulier Instellingen"
+
+#: single_pages/dashboard/store/settings/reviews.php:147
+msgid "Groups"
+msgstr "Groepen"
+
+#: single_pages/dashboard/store/settings/reviews.php:147
+msgid "May submit a review"
+msgstr "Mag een beoordeling invullen"
+
+#: single_pages/dashboard/store/settings/reviews.php:156
+msgid "Captcha"
+msgstr ""
+
+#: single_pages/dashboard/store/settings/reviews.php:156
+msgid "Show on the following forms"
+msgstr "Ton om de onderstaande formulieren."
+
+#: single_pages/dashboard/store/settings/reviews.php:159
+msgid "Captcha after reminder mail"
+msgstr "Captcha na de beoordeling herinneringsmail"
+
+#: single_pages/dashboard/store/settings/reviews.php:163
+msgid "Captcha in form when user NOT logged in"
+msgstr "Captcha in formulier wanneer de gebruiker NIET is ingelogd."
+
+#: single_pages/dashboard/store/settings/reviews.php:167
+msgid "Captcha in form when user IS logged in"
+msgstr "Captcha in formulier wanneer de gebruiker IS ingelogd"
+
+#: single_pages/dashboard/store/settings/reviews.php:170
+msgid "Form Details"
+msgstr "Formulier Details"
+
+#: single_pages/dashboard/store/settings/reviews.php:176
+msgid "Submit Text"
+msgstr "Verzenden Tekst"
+
+#: single_pages/dashboard/store/settings/reviews.php:180
+msgid "Notify me by email when people submit a review"
+msgstr "Verwittig me per e-mail wanneer gebruikers een beoordeling versturen."
+
+#: single_pages/dashboard/store/settings/reviews.php:194
+msgid "(Seperate multiple emails with a comma)"
+msgstr "(Scheid meerdere e-mail adressen met een komma)"
+
+#: single_pages/dashboard/store/settings/reviews.php:197
+msgid "Message to display when review completed"
+msgstr "Bericht na het indienen van een beoordeling"
+
+#: single_pages/dashboard/store/settings/reviews.php:203
+msgid "Redirect to another page after review submission?"
+msgstr "Omleiden naar een andere pagina na het indienen van een beoordeling?"
+
+#: single_pages/dashboard/store/settings/reviews.php:223
+msgid "Review Reminder"
+msgstr "Beoordeling Herinnering"
+
+#: single_pages/dashboard/store/settings/reviews.php:226
+msgid "Enable Review Reminder?"
+msgstr "Beoordeling Herinnering Inschakelen?"
+
+#: single_pages/dashboard/store/settings/reviews.php:227
+msgid "No, the customer has to use the form on the website."
+msgstr "Neen, de klant moet het formulier op de website gebruiken."
+
+#: single_pages/dashboard/store/settings/reviews.php:227
+msgid "Yes, the customer gets an e-mail to give a review about its last order."
+msgstr ""
+"Ja, de klant krijgt een e-mail om een beoordeling in te dienen over zijn/"
+"haar laatste bestelling."
+
+#: single_pages/dashboard/store/settings/reviews.php:230
+msgid "Settings"
+msgstr "Instellingen"
+
+#: single_pages/dashboard/store/settings/reviews.php:235
+msgid "Days after creating order?"
+msgstr "Dagen na creatie bestelling?"
+
+#: single_pages/dashboard/store/settings/reviews.php:241
+msgid "Order must have the status"
+msgstr "Bestelling moet deze status hebben"
+
+#: single_pages/dashboard/store/settings/reviews.php:248
+msgid "E-mail Details"
+msgstr ""
+
+#: single_pages/dashboard/store/settings/reviews.php:251
+#, php-format
+msgid "Send reminder copy to email %sseparate multiple emails with commas%s"
+msgstr ""
+"Verzend een herinnering kopie naar e-mail %s(Scheid meerdere e-mail adressen "
+"met een komma)%s"
+
+#: single_pages/dashboard/store/settings/reviews.php:252
+msgid "Email Address"
+msgstr "E-mail adres"
+
+#: single_pages/dashboard/store/settings/reviews.php:255
+msgid "Emails Sent From"
+msgstr "E-mails Verzonden Van"
+
+#: single_pages/dashboard/store/settings/reviews.php:260
+msgid "From Email"
+msgstr "Van E-mail"
+
+#: single_pages/dashboard/store/settings/reviews.php:261
+msgid "From Email Address"
+msgstr "Van E-mailadres"
+
+#: single_pages/dashboard/store/settings/reviews.php:267
+#: single_pages/dashboard/store/settings/reviews.php:268
+msgid "From Name"
+msgstr "Van Naam"
+
+#: single_pages/dashboard/store/settings/reviews.php:273
+msgid "Reminder Emails"
+msgstr "Herinnering E-mails"
+
+#: single_pages/dashboard/store/settings/reviews.php:276
+msgid "Reminder Email Header Html"
+msgstr "Herinnering E-mail Hoofding HTML"
+
+#: single_pages/dashboard/store/settings/reviews.php:281
+msgid "Reminder Email Header Content"
+msgstr "Herinnering E-mail Hoofding Inhoud"
+
+#: single_pages/dashboard/store/settings/reviews.php:287
+msgid "Reminder Email Footer Content"
+msgstr "Herinnering E-mail Sluiting Inhoud"
+
+#: single_pages/dashboard/store/settings/reviews.php:293
+msgid "Reminder Email Footer Html"
+msgstr "Herinnering E-mail Sluiting HTML"
+
+#: single_pages/dashboard/store/settings/reviews.php:301
+msgid "Save Settings"
+msgstr "Instellingen Opslaan"
+
+#: single_pages/reviews.php:10
+msgid "Review for"
+msgstr "Beoordeling voor"
+
+#: single_pages/reviews.php:30
+msgid "Give another review on one of your purchased products of order"
+msgstr ""
+"Geef een beoordeling op één van de andere producten van deze bestelling"
+
+#: single_pages/reviews.php:124
+msgid "Order"
+msgstr "Bestelling"
+
+#: single_pages/reviews.php:138
+msgid "The order is not found..."
+msgstr "De bestelling kon niet gevonden worden..."

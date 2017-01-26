@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+		xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd">
+	<table name="btCommunityStoreReviews">
+		<field name="bID" type="integer" size="10">
+			<unsigned />
+			<key />
+		</field>
+		<field name="sortOrder" type="string" size="30"></field>
+		<field name="filter" type="string" size="30"></field>
+		<field name="filterCID" type="integer"><unsigned/></field>
+		<field name="showForm" type="boolean"></field>
+		<field name="title" type="string" size="255"></field>
+		<field name="maxReviews" type="integer"></field>
+		<field name="reviewsPerRow" type="integer" size="2"></field>
+		<field name="showPagination" type="boolean"></field>
+	</table>
+</schema>
