@@ -167,9 +167,10 @@ class ReviewList extends ItemList
     protected function createPaginationObject()
     {
         $adapter = new DoctrineDbalAdapter($this->deliverQueryObject(), function ($query) {
-            $query->select('count(distinct r.rID) c ');
-            $query->groupBy('null');
-            $query->having('1 = 1');
+            $values = $query->execute()->fetchAll();
+            $count = count($values);
+
+            $query->resetQueryParts(array('groupBy', 'orderBy', 'having', 'join', 'where', 'from'))->from('DUAL')->select($count . ' c ');
         });
         $pagination = new Pagination($this, $adapter);
 
