@@ -68,12 +68,6 @@ class Review
     protected $rComment;
 
     /**
-     * @ManyToOne(targetEntity="Concrete\Package\CommunityStore\Src\CommunityStore\Product\Product")
-     * @JoinColumn(name="pID", referencedColumnName="pID", onDelete="CASCADE")
-     */
-    protected $product;
-
-    /**
      * @OneToMany(targetEntity="Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Review\ReviewRating\ReviewRatingValues", mappedBy="review",cascade={"persist"}))
      */
     protected $ratings;
@@ -126,7 +120,7 @@ class Review
     }
 
     public function setProduct($product) {
-        $this->product = $product;
+        $this->pID = $product->getID();
     }
 
     public function getID() {
@@ -162,7 +156,7 @@ class Review
     }
 
     public function getProduct() {
-      return $this->product;
+      return StoreProduct::getByID($this->pID);
     }
 
     public function getCustomer() {

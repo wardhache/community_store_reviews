@@ -5,6 +5,7 @@ use Package;
 use Database;
 use Config;
 use Doctrine\Common\Collections\ArrayCollection;
+use Concrete\Package\CommunityStore\Src\CommunityStore\Order\Order as StoreOrder;
 
 /**
  * @Entity
@@ -38,12 +39,6 @@ class ReviewReminder
      */
     protected $rrqSent;
 
-    /**
-     * @ManyToOne(targetEntity="Concrete\Package\CommunityStore\Src\CommunityStore\Order\Order")
-     * @JoinColumn(name="oID", referencedColumnName="oID", onDelete="CASCADE")
-     */
-    protected $order;
-
     protected static $table = "CommunityStoreReviewReminderQueue";
 
     public static function getTableName()
@@ -67,7 +62,7 @@ class ReviewReminder
     }
 
     public function setOrder($order) {
-        $this->order = $order;
+        $this->oID = $order->getOrderID();
     }
 
     public function getID() {
@@ -95,7 +90,7 @@ class ReviewReminder
     }
 
     public function getOrder() {
-      return $this->order;
+      return StoreOrder::getByID($this->oID);
     }
 
     public static function getByID($rrqID)
