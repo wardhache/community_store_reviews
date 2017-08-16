@@ -64,7 +64,7 @@ class controller extends Package{
   }
 
   public function install(){
-    $pkg = parent::install();
+    parent::install();
     $this->configure();
 
     $db = \Database::connection();
