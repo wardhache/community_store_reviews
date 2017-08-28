@@ -10,11 +10,13 @@ $dh = Core::make('helper/date');
         <?= $form->hidden('reload', 1); ?>
         <?php $currentStatus = $review->getCurrentStatus(); ?>
         <?php $statusHandle = $currentStatus->getHandle(); ?>
-        <?php if($statusHandle == "pending" || $statusHandle == "not_approved") { ?>
-          <button type="submit" value="approved" class="btn btn-success" name="status"><?= t('Approve Review'); ?></button>
-        <?php } ?>
-        <?php if($statusHandle == "pending" || $statusHandle == "approved") { ?>
-          <button type="submit" value="not_approved" class="btn btn-danger" name="status"><?= t('Decline Review'); ?></button>
+        <?php if($userApprove) { ?>
+            <?php if($statusHandle == "pending" || $statusHandle == "not_approved") { ?>
+              <button type="submit" value="approved" class="btn btn-success" name="status"><?= t('Approve Review'); ?></button>
+            <?php } ?>
+            <?php if($statusHandle == "pending" || $statusHandle == "approved") { ?>
+              <button type="submit" value="not_approved" class="btn btn-danger" name="status"><?= t('Decline Review'); ?></button>
+            <?php } ?>
         <?php } ?>
       </form>
     </div>
@@ -163,7 +165,7 @@ $dh = Core::make('helper/date');
                 <th><a><?= t("Nickname")?></a></th>
                 <th><a><?= t("Avg. Rating")?></a></th>
                 <th><a><?= t("Status")?></a></th>
-                <th><a><?= t("Actions")?></a></th>
+                <?php if($userApprove) { ?><th><a><?= t("Actions")?></a></th><?php } ?>
                 <th><a><?= t("View")?></a></th>
             </thead>
             <tbody>
@@ -206,12 +208,14 @@ $dh = Core::make('helper/date');
                             }
                           ?>
                         </td>
-                        <td data-column="actions">
-                          <?php if($statusHandle == "pending") { ?>
-                            <a href="" data-status-handle="approved" data-review="<?= $review->getID()?>" class="btn btn-success store-dashboard-review-status" title="<?= t('Approve'); ?>"><i class="fa fa-check"></i></a>
-                            <a href="" data-status-handle="not_approved" data-review="<?= $review->getID()?>" class="btn btn-danger store-dashboard-review-status" title="<?= t('Decline'); ?>"><i class="fa fa-times"></i></a>
-                          <?php } ?>
-                        </td>
+                        <?php if($userApprove) { ?>
+                            <td data-column="actions">
+                              <?php if($statusHandle == "pending") { ?>
+                                <a href="" data-status-handle="approved" data-review="<?= $review->getID()?>" class="btn btn-success store-dashboard-review-status" title="<?= t('Approve'); ?>"><i class="fa fa-check"></i></a>
+                                <a href="" data-status-handle="not_approved" data-review="<?= $review->getID()?>" class="btn btn-danger store-dashboard-review-status" title="<?= t('Decline'); ?>"><i class="fa fa-times"></i></a>
+                              <?php } ?>
+                            </td>
+                        <?php } ?>
                         <td data-column="view"><a class="btn btn-primary" href="<?=URL::to('/dashboard/store/reviews/review/',$review->getID())?>"><?= t("View")?></a></td>
                     </tr>
                 <?php } ?>
@@ -222,32 +226,33 @@ $dh = Core::make('helper/date');
     <?php if ($paginator->getTotalPages() > 1) { ?>
         <?= $pagination ?>
     <?php } ?>
+    <?php if($userApprove) { ?>
+        <script>
+          $(function() {
+            $('.store-dashboard-review-status').on('click', function(e) {
+              e.preventDefault();
+              var statusHandle = $(this).data('status-handle');
+              var reviewID = $(this).data('review');
 
-    <script>
-      $(function() {
-        $('.store-dashboard-review-status').on('click', function(e) {
-          e.preventDefault();
-          var statusHandle = $(this).data('status-handle');
-          var reviewID = $(this).data('review');
-
-          if(statusHandle != null && reviewID != null) {
-            $.ajax({
-               type: 'post',
-               url: '<?= $this->action('change_review_status'); ?>',
-               data: {
-                  review: reviewID,
-                  status: statusHandle
-               },
-               //dataType: 'json',
-               success: function(data) {
-                  $('table.ccm-search-results-table tbody tr[data-row=' + reviewID + '] td[data-column=status]').empty().html(data);
-                  $('table.ccm-search-results-table tbody tr[data-row=' + reviewID + '] td[data-column=actions]').empty();
-               },
-            });
-          } else {
-            alert('<?= t("The status of the review could not be changed."); ?>');
-          }
-        })
-      });
-    </script>
+              if(statusHandle != null && reviewID != null) {
+                $.ajax({
+                   type: 'post',
+                   url: '<?= $this->action('change_review_status'); ?>',
+                   data: {
+                      review: reviewID,
+                      status: statusHandle
+                   },
+                   //dataType: 'json',
+                   success: function(data) {
+                      $('table.ccm-search-results-table tbody tr[data-row=' + reviewID + '] td[data-column=status]').empty().html(data);
+                      $('table.ccm-search-results-table tbody tr[data-row=' + reviewID + '] td[data-column=actions]').empty();
+                   },
+                });
+              } else {
+                alert('<?= t("The status of the review could not be changed."); ?>');
+              }
+            })
+          });
+        </script>
+    <?php } ?>
 <?php } ?>
