@@ -28,6 +28,8 @@ class Reviews extends DashboardPageController
 
         $reviewList->setItemsPerPage(20);
 
+        $this->setUserApprove();
+
         $paginator = $reviewList->getPagination();
         $pagination = $paginator->renderDefaultView();
         $this->set('reviewList',$paginator->getCurrentPageResults());
@@ -47,6 +49,8 @@ class Reviews extends DashboardPageController
         } else {
             $this->redirect('/dashboard/store/reviews');
         }
+
+        $this->setUserApprove();
 
         $this->requireAsset('css', 'communityStoreReviewsDashboard');
         $this->set('pageTitle', t("Review #") . $review->getID());
@@ -96,6 +100,14 @@ class Reviews extends DashboardPageController
             $this->redirect('/dashboard/store/reviews/');
           }
 
+        }
+    }
+
+    public function setUserApprove() {
+        $u = new User();
+        $g = Group::getByName("Administrators");
+        if($u->inGroup($g) && $u->isLoggedIn()) {
+            $this->set('userApprove', true);
         }
     }
 }

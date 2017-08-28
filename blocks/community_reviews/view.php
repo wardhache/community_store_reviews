@@ -3,7 +3,7 @@
 
 <div class="store-reviews">
   <div class="row">
-    <div class="<?= (!$showForm ? 'col-sm-12' : 'col-sm-7'); ?> col-xs-12">
+    <div class="<?= (!$userShowForm ? 'col-sm-12' : 'col-sm-7'); ?> col-xs-12">
       <h3><?= (!empty($title) && trim($title) != '' ? $title : t('Reviews')); ?></h3>
       <?php if(!empty($reviews)) { ?>
         <?php
@@ -83,9 +83,8 @@
         }
         ?>
     </div>
-    <?php if($showForm) { ?>
+    <?php if($userShowForm) { ?>
       <div class="col-sm-5 col-xs-12">
-        <?php if($userShowForm) { ?>
           <h3><?= $formTitle ?></h3>
           <?php if($success) { ?>
             <div class="alert alert-success">
@@ -136,7 +135,6 @@
               </div>
             </form>
           <?php } ?>
-        <?php } ?>
       </div>
     <?php } ?>
   </div>
