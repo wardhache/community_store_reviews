@@ -420,7 +420,7 @@ class Review
       if(!empty($formRecipientEmail) && trim($formRecipientEmail) != '') {
         $fromEmail = "store@" . $_SERVER['SERVER_NAME'];
 
-        $mh = new MailService();
+        $mh = \Core::make('mail');
 
         $mh->from($fromEmail);
         $mh->to($formRecipientEmail);
