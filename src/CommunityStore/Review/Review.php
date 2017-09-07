@@ -214,18 +214,18 @@ class Review
       return $averageRating / count($ratings);
     }
 
-    public function getAverageRatingOfProduct($product) {
+    public static function getAverageRatingOfProduct($product) {
       $db = \Database::connection();
 
       $status = $db->fetchAssoc("SELECT AVG(rra.rraValue) as avgRating FROM CommunityStoreReviews r
                                 INNER JOIN CommunityStoreReviewRatings rra ON rra.rID = r.rID
                                 WHERE r.pID = ?",
-                                array($product->getProductID()));
+                                array($product->getID()));
 
       return $status['avgRating'];
     }
 
-    public function getAverageApprovedRatingOfProduct($product) {
+    public static function getAverageApprovedRatingOfProduct($product) {
       $db = \Database::connection();
 
       $status = $db->fetchAssoc("SELECT AVG(rra.rraValue) as avgRating FROM CommunityStoreReviews r
@@ -235,7 +235,7 @@ class Review
                                 WHERE r.pID = ? AND rs.rsHandle = ?
                                 AND rsh.rshDate = (SELECT MAX(rsh2.rshDate) FROM CommunityStoreReviewStatusHistories rsh2
                                                   WHERE rsh2.rID = rsh.rID)",
-                                array($product->getProductID(), 'approved'));
+                                array($product->getID(), 'approved'));
 
       return $status['avgRating'];
     }
