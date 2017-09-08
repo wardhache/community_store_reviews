@@ -13,8 +13,8 @@ use \Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Report\ReviewRepo
 
 class Reviews extends DashboardPageController
 {
-
-    public function view() {
+    public function view()
+    {
         $rr = new StoreReviewReport();
         $this->set('rr',$rr);
         $pkg = Package::getByHandle('community_store');
@@ -26,8 +26,15 @@ class Reviews extends DashboardPageController
 
         $dateFrom = $this->post('dateFrom');
         $dateTo = $this->post('dateTo');
-        if(!$dateFrom){ $dateFrom = $thirtyDaysAgo; }
-        if(!$dateTo){ $dateTo = $today; }
+
+        if (!$dateFrom) {
+            $dateFrom = $thirtyDaysAgo;
+        }
+
+        if (!$dateTo) {
+            $dateTo = $today;
+        }
+
         $this->set('dateFrom',$dateFrom);
         $this->set('dateTo',$dateTo);
 

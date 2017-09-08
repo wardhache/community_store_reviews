@@ -98,10 +98,8 @@ class ReviewList extends ItemList
             }
 
             if (!empty($reviewIDs)) {
-
                 if ($paramcount > 0) {
                     $this->query->andWhere('r.rID in ('.implode(',', $reviewIDs).')');
-
                 } else {
                     $this->query->where('r.rID in ('.implode(',', $reviewIDs).')');
                 }

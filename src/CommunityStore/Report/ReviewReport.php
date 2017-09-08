@@ -21,13 +21,13 @@ class ReviewReport extends StoreReviewList
         $rr->setCIDs(Page::getByID(1)->getCollectionChildrenArray());
         $rr->setFromDate($from);
         $rr->setToDate($to);
-        //$rr->setLimit($limit);
 
         $total = 0;
         $approvedTotal = 0;
         $totalResults = 0;
         $totalResultsApproved = 0;
-        foreach($rr->getResults() as $review) {
+
+        foreach ($rr->getResults() as $review) {
             $total = $total + $review->getAverageRating();
             $status = $review->getCurrentStatus();
             $totalResults++;
@@ -37,10 +37,11 @@ class ReviewReport extends StoreReviewList
             }
         }
 
-        if($totalResults > 0) {
+        if ($totalResults > 0) {
             $total = $total / $totalResults;
         }
-        if($totalResultsApproved > 0) {
+
+        if ($totalResultsApproved > 0) {
             $approvedTotal = $approvedTotal / $totalResultsApproved;
         }
 
@@ -54,17 +55,20 @@ class ReviewReport extends StoreReviewList
         return $totals;
     }
 
-    public static function getTotalsByProduct() {
+    public static function getTotalsByProduct()
+    {
         $rr = new self();
+
         $rr->setCIDs(Page::getByID(1)->getCollectionChildrenArray());
         $rr->setFromDate("1970-01-01");
         $rr->setToDate();
 
         $products = array();
-        foreach($rr->getResults() as $review) {
+        foreach ($rr->getResults() as $review) {
             $product = $review->getProduct();
             $productID = $product->getID();
-            if(!array_key_exists($productID, $products)) {
+
+            if (!array_key_exists($productID, $products)) {
                 $products[$productID]['ID'] = $product->getID();
                 $products[$productID]['name'] = $product->getName();
                 $products[$productID]['number'] = 0;
@@ -76,19 +80,22 @@ class ReviewReport extends StoreReviewList
             $products[$productID]['total'] = $products[$productID]['total'] + $review->getAverageRating();
             $products[$productID]['number']++;
             $status = $review->getCurrentStatus();
-            if($status->getHandle() == 'approved') {
-              $products[$productID]['approvedTotal'] = $products[$productID]['approvedTotal'] + $review->getAverageRating();
-              $products[$productID]['approvedNumber']++;
+
+            if ($status->getHandle() == 'approved') {
+                $products[$productID]['approvedTotal'] = $products[$productID]['approvedTotal'] + $review->getAverageRating();
+                $products[$productID]['approvedNumber']++;
             }
         }
 
-        if(!empty($products)) {
-            foreach($products as $product) {
+        if (!empty($products)) {
+            foreach ($products as $product) {
                 $productID = $product['ID'];
-                if($product['number'] > 0) {
+
+                if ($product['number'] > 0) {
                     $products[$productID]['total'] = $products[$productID]['total'] / $product['number'];
                 }
-                if($product['approvedNumber'] > 0) {
+
+                if ($product['approvedNumber'] > 0) {
                     $products[$productID]['approvedTotal'] = $products[$productID]['approvedTotal'] / $product['approvedNumber'];
                 }
             }
@@ -103,6 +110,7 @@ class ReviewReport extends StoreReviewList
 
         return self::getTotalsByRange($today, $today, 0);
     }
+
     public static function getThirtyDays()
     {
         $today = date('Y-m-d');
@@ -110,6 +118,7 @@ class ReviewReport extends StoreReviewList
 
         return self::getTotalsByRange($thirtyDaysAgo, $today, 0);
     }
+
     public static function getYearToDate()
     {
         $today = date('Y-m-d');
@@ -118,6 +127,7 @@ class ReviewReport extends StoreReviewList
 
         return self::getTotalsByRange($jan1, $today, 0);
     }
+
     public static function getByMonth($date)
     {
         $from = date('Y-m-01', strtotime($date));
@@ -125,5 +135,4 @@ class ReviewReport extends StoreReviewList
 
         return self::getTotalsByRange($from, $to, 0);
     }
-
 }

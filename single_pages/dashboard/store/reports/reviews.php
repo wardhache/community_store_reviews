@@ -12,40 +12,37 @@ use \Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Report\ReviewRepo
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 stat">
-            <div>
-              <strong><?= t('Total')?> </strong>
+                        <div><strong><?= t('Total')?> </strong></div>
+                        <div>
+                            <?php if(empty($tr['total'])) { ?>
+                                <?= t('No reviews found'); ?>
+                            <?php } else { ?>
+                                <div class="store-rating-box">
+                                    <div class="store-rating" style="width: <?= $tr['total']; ?>%;"></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 stat">
+                        <div><strong><?= t('Approved')?> </strong></div>
+                        <div>
+                            <?php if(empty($tr['totalApproved'])) { ?>
+                                <?= t('No approved reviews found'); ?>
+                            <?php } else { ?>
+                                <div class="store-rating-box">
+                                    <div class="store-rating" style="width: <?= $tr['totalApproved']; ?>%;"></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-						<div>
-              <?php if(empty($tr['total'])) { ?>
-                <?= t('No reviews found'); ?>
-              <?php } else { ?>
-								<div class="store-rating-box">
-									<div class="store-rating" style="width: <?= $tr['total']; ?>%;"></div>
-								</div>
-              <?php } ?>
-            </div>
-					</div>
         </div>
-        <div class="row">
-					<div class="col-xs-12 col-sm-12 stat">
-            <div>
-              <strong><?= t('Approved')?> </strong>
-            </div>
-            <div>
-              <?php if(empty($tr['totalApproved'])) { ?>
-                <?= t('No approved reviews found'); ?>
-              <?php } else { ?>
-								<div class="store-rating-box">
-									<div class="store-rating" style="width: <?= $tr['totalApproved']; ?>%;"></div>
-								</div>
-              <?php } ?>
-            </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-  <div class="col-xs-12 col-md-4">
+    </div>
+    <div class="col-xs-12 col-md-4">
 		<div class="panel-sale panel panel-default">
 			<?php $td = ReviewReport::getThirtyDays(); ?>
 			<div class="panel-heading">
@@ -54,83 +51,79 @@ use \Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Report\ReviewRepo
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 stat">
-            <div>
-              <strong><?= t('Total')?> </strong>
-            </div>
+                        <div><strong><?= t('Total')?> </strong></div>
 						<div>
-              <?php if(empty($td['total'])) { ?>
-                <?= t('No reviews found'); ?>
-              <?php } else { ?>
-								<div class="store-rating-box">
+                            <?php if(empty($td['total'])) { ?>
+                                <?= t('No reviews found'); ?>
+                            <?php } else { ?>
+                                <div class="store-rating-box">
 									<div class="store-rating" style="width: <?= $td['total']; ?>%;"></div>
-								</div>
-              <?php } ?>
-            </div>
+                                </div>
+                            <?php } ?>
+                        </div>
 					</div>
-        </div>
-        <div class="row">
+                </div>
+                <div class="row">
 					<div class="col-xs-12 col-sm-12 stat">
-            <div>
-              <strong><?= t('Approved')?> </strong>
+                        <div><strong><?= t('Approved')?> </strong></div>
+                        <div>
+                            <?php if(empty($td['totalApproved'])) { ?>
+                                <?= t('No approved reviews found'); ?>
+                            <?php } else { ?>
+                                <div class="store-rating-box">
+                                    <div class="store-rating" style="width: <?= $td['totalApproved']; ?>%;"></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-              <?php if(empty($td['totalApproved'])) { ?>
-                <?= t('No approved reviews found'); ?>
-              <?php } else { ?>
-								<div class="store-rating-box">
-									<div class="store-rating" style="width: <?= $td['totalApproved']; ?>%;"></div>
-								</div>
-              <?php } ?>
-            </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+    </div>
 	<div class="col-xs-12 col-md-4">
 		<div class="panel-sale panel panel-default">
 			<?php $yd = ReviewReport::getYearToDate(); ?>
-			<div class="panel-heading">
-				<h2 class="panel-title"><?= t("Year To Date")?></h2>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 stat">
-						<div>
-							<strong><?= t('Total')?> </strong>
-						</div>
-						<div>
-							<?php if(empty($yd['total'])) { ?>
-								<?= t('No reviews found'); ?>
-							<?php } else { ?>
-								<div class="store-rating-box">
-									<div class="store-rating" style="width: <?= $yd['total']; ?>%;"></div>
-								</div>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 stat">
-						<div>
-							<strong><?= t('Approved')?> </strong>
-						</div>
-						<div>
-							<?php if(empty($yd['totalApproved'])) { ?>
-								<?= t('No approved reviews found'); ?>
-							<?php } else { ?>
-								<div class="store-rating-box">
-									<div class="store-rating" style="width: <?= $yd['totalApproved']; ?>%;"></div>
-								</div>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="panel-heading">
+                <h2 class="panel-title"><?= t("Year To Date")?></h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 stat">
+                        <div><strong><?= t('Total')?> </strong></div>
+                        <div>
+                            <?php if(empty($yd['total'])) { ?>
+                                <?= t('No reviews found'); ?>
+                            <?php } else { ?>
+                                <div class="store-rating-box">
+                                    <div class="store-rating" style="width: <?= $yd['total']; ?>%;"></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 stat">
+                        <div>
+                            <strong><?= t('Approved')?> </strong>
+                        </div>
+                        <div>
+                            <?php if(empty($yd['totalApproved'])) { ?>
+                                <?= t('No approved reviews found'); ?>
+                            <?php } else { ?>
+                                <div class="store-rating-box">
+                                    <div class="store-rating" style="width: <?= $yd['totalApproved']; ?>%;"></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<hr>
+
+<hr />
+
 <div class="well">
 	<div class="row">
 		<div class="col-xs-12 col-sm-4">
@@ -148,7 +141,7 @@ use \Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Report\ReviewRepo
 			</form>
 		</div>
 	</div>
-	<hr>
+	<hr />
 	<h4><?= t("Summary")?></h4>
 	<table class="table table-striped">
 		<thead>
@@ -181,7 +174,9 @@ use \Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Report\ReviewRepo
 		</tbody>
 	</table>
 </div>
+
 <hr />
+
 <div class="row">
 	<div class="col-sm-12">
 		<h3><?= t("View Reviews by Product")?></h3>

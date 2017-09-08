@@ -61,36 +61,44 @@ class ReviewReminder
         $this->rrqSent = $rrqSent;
     }
 
-    public function setOrder($order) {
+    public function setOrder($order)
+    {
         $this->oID = $order->getOrderID();
     }
 
-    public function getID() {
-      return $this->rrqID;
+    public function getID()
+    {
+        return $this->rrqID;
     }
 
-    public function getOrderID() {
-      return $this->oID;
+    public function getOrderID()
+    {
+        return $this->oID;
     }
 
-    public function getDate() {
-      return $this->rrqDate;
+    public function getDate()
+    {
+        return $this->rrqDate;
     }
 
-    public function getScheduledDate() {
-      return $this->rrqScheduledDate;
+    public function getScheduledDate()
+    {
+        return $this->rrqScheduledDate;
     }
 
-    public function getFrom() {
-      return $this->rrqFrom;
+    public function getFrom()
+    {
+        return $this->rrqFrom;
     }
 
-    public function getSent() {
-      return $this->rrqSent;
+    public function getSent()
+    {
+        return $this->rrqSent;
     }
 
-    public function getOrder() {
-      return StoreOrder::getByID($this->oID);
+    public function getOrder()
+    {
+        return StoreOrder::getByID($this->oID);
     }
 
     public static function getByID($rrqID)
@@ -133,25 +141,25 @@ class ReviewReminder
     }
 
     public function add($order) {
-      if(!empty($order)) {
-        $reviewReminderOrderAfterDays = Config::get('community_store_review.reminderOrderAfterDays');
-        if(empty($reviewReminderOrderAfterDays) && trim($reviewReminderOrderAfterDays) != '') {
-          $reviewReminderOrderAfterDays = 14;
+        if(!empty($order)) {
+            $reviewReminderOrderAfterDays = Config::get('community_store_review.reminderOrderAfterDays');
+
+            if (empty($reviewReminderOrderAfterDays) && trim($reviewReminderOrderAfterDays) != '') {
+                $reviewReminderOrderAfterDays = 14;
+            }
+
+            $scheduledDate = new \DateTime();
+            $scheduledDate->modify('+' . $reviewReminderOrderAfterDays . ' day');
+
+            if(empty(self::getByOrderID($order->getOrderID()))) {
+                $reviewReminder = new self();
+                $reviewReminder->setOrder($order);
+                $reviewReminder->setDate(new \DateTime());
+                $reviewReminder->setScheduledDate($scheduledDate);
+                $reviewReminder->setSent(0);
+
+                $reviewReminder->save();
+            }
         }
-
-        $scheduledDate = new \DateTime();
-        $scheduledDate->modify('+' . $reviewReminderOrderAfterDays . ' day');
-
-        if(empty(self::getByOrderID($order->getOrderID()))) {
-          $reviewReminder = new self();
-          $reviewReminder->setOrder($order);
-          $reviewReminder->setDate(new \DateTime());
-          $reviewReminder->setScheduledDate($scheduledDate);
-          $reviewReminder->setSent(0);
-
-          $reviewReminder->save();
-        }
-      }
-
     }
 }

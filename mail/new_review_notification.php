@@ -26,48 +26,52 @@ ob_start();
             <td valign="top" style="margin-top: 15px;">
                 <h3><?= t('Details') ?></h3>
                 <table border="0" width="100%">
-                  <tr>
-                    <td><?= t('Nickname'); ?></td>
-                    <td><?= $review->getNickname(); ?></td>
-                  </tr>
-                  <?php
-                  if(!empty($ratings)) {
-                    foreach($ratings as $rating) {
-                      ?>
-                      <tr>
-                        <td><?= t($rating->getRating()->getName()); ?></td>
-                        <td>
-                          <?php for($i = 0; $i < 100; $i += 20) {
-                            if($rating->getValue() <= $i ) { echo "&#9734;"; } else { echo "&#9733;"; }
-                          } ?>
-                        </td>
-                      </tr>
-                      <?php
-                    }
-                  }
-                  ?>
-                  <tr>
-                    <td><?= t('Title'); ?></td>
-                    <td><?= $review->getTitle(); ?></td>
-                  </tr>
-                  <tr>
-                    <td><?= t('Comment'); ?></td>
-                    <td><?= $review->getComment(); ?></td>
-                  </tr>
-                  <tr>
-                    <td><?= t('Status'); ?></td>
-                    <td><?= $review->getCurrentStatus()->getName(); ?></td>
-                  </tr>
+                    <tr>
+                        <td><?= t('Nickname'); ?></td>
+                        <td><?= $review->getNickname(); ?></td>
+                    </tr>
+                    <?php if (!empty($ratings)) { ?>
+                        <?php foreach ($ratings as $rating) { ?>
+                            <tr>
+                                <td><?= t($rating->getRating()->getName()); ?></td>
+                                <td>
+                                    <?php
+                                        for ($i = 0; $i < 100; $i += 20) {
+                                            if ($rating->getValue() <= $i ) {
+                                                echo "&#9734;";
+                                            } else {
+                                                echo "&#9733;";
+                                            }
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
+                      <?php } ?>
+                    <?php } ?>
+                    <tr>
+                        <td><?= t('Title'); ?></td>
+                        <td><?= $review->getTitle(); ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= t('Comment'); ?></td>
+                        <td><?= $review->getComment(); ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= t('Status'); ?></td>
+                        <td><?= $review->getCurrentStatus()->getName(); ?></td>
+                    </tr>
                 </table>
             </td>
         </tr>
         <tr>
-          <td valign="top">
-            <p style="margin-top: 30px;">
-              <?= t('Click on the link to view this review'); ?><br />
-              <a href="<?php echo View::url('/dashboard/store/reviews/', 'review', $review->getID()) ?>"><?php echo View::url('/dashboard/store/reviews/', 'review', $review->getID()) ?></a>
-            </p>
-          </td>
+            <td valign="top">
+                <p style="margin-top: 30px;">
+                    <?= t('Click on the link to view this review'); ?><br />
+                    <a href="<?php echo View::url('/dashboard/store/reviews/', 'review', $review->getID()) ?>">
+                        <?php echo View::url('/dashboard/store/reviews/', 'review', $review->getID()) ?>
+                    </a>
+                </p>
+            </td>
         </tr>
     </table>
     </body>

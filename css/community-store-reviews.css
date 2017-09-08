@@ -1,75 +1,75 @@
 .ccm-page .store-rating-box {
-  background: url("images/star-rating.png") repeat-x;
-  font-size: 0;
-  height: 30px;
-  line-height: 0;
-  overflow: hidden;
-  text-indent: -999em;
-  width: 150px;
+    background: url("images/star-rating.png") repeat-x;
+    font-size: 0;
+    height: 30px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 150px;
 }
 
 .ccm-page .store-rating-box .store-rating {
-  background: url("images/star-rating.png") repeat-x;
-  background-position: 0 100%;
-  float: left;
-  height: 30px;
+    background: url("images/star-rating.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 30px;
 }
 
 .ccm-page .store-rating-box-small {
-  background: url("images/star-rating-small.png") repeat-x;
-  font-size: 0;
-  height: 18px;
-  line-height: 0;
-  overflow: hidden;
-  text-indent: -999em;
-  width: 90px;
+    background: url("images/star-rating-small.png") repeat-x;
+    font-size: 0;
+    height: 18px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 90px;
 }
 
 .ccm-page .store-rating-box-small .store-rating {
-  background: url("images/star-rating-small.png") repeat-x;
-  background-position: 0 100%;
-  float: left;
-  height: 18px;
+    background: url("images/star-rating-small.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 18px;
 }
 
 .ccm-page div.store-rating-stars {
-  width: 150px;
-  display: inline-block;
+    width: 150px;
+    display: inline-block;
 }
 
 .ccm-page div.store-rating-stars.big {
-  width: 375px !important;
+    width: 375px !important;
 }
 
 .ccm-page input.store-rating-star { display: none; }
 
 .ccm-page label.store-rating-star {
-  float: right;
-  background: url("images/star-rating.png") no-repeat;
-  font-size: 0;
-  height: 30px;
+    float: right;
+    background: url("images/star-rating.png") no-repeat;
+    font-size: 0;
+    height: 30px;
     width: 30px;
-  line-height: 0;
-  overflow: hidden;
-  text-indent: -999em;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
 }
 
 .ccm-page label.store-rating-star.big {
-  background: url("images/star-rating-big.png") no-repeat !important;
-  height: 75px !important;
-  width: 75px !important;
+    background: url("images/star-rating-big.png") no-repeat !important;
+    height: 75px !important;
+    width: 75px !important;
 }
 
 .ccm-page input.store-rating-star:checked ~ label.store-rating-star {
-  background: url("images/star-rating.png") no-repeat;
-  background-position: 0 100%;
+    background: url("images/star-rating.png") no-repeat;
+    background-position: 0 100%;
 }
 
 .ccm-page input.store-rating-star:checked ~ label.store-rating-star.big {
-  background: url("images/star-rating-big.png") no-repeat !important;
-  background-position: 0 100% !important;
+    background: url("images/star-rating-big.png") no-repeat !important;
+    background-position: 0 100% !important;
 }
 
 .ccm-page label.store-rating-star:hover {
-  transform: rotate(-15deg);
+    transform: rotate(-15deg);
 }

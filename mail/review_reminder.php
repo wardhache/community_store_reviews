@@ -19,25 +19,25 @@ $mailData['cID'] = $order->getCustomerID();
     <?= $mailHeaderHtml; ?>
     <?= $mailHeaderContent; ?>
     <table>
-      <tbody>
-        <?php $orderItems = $order->getOrderItems(); ?>
-        <?php if(!empty($orderItems)) { ?>
+        <tbody>
+            <?php $orderItems = $order->getOrderItems(); ?>
+            <?php if(!empty($orderItems)) { ?>
 
-          <?php foreach($orderItems as $item) { ?>
-            <?php
-              $mailData['pID'] = $item->getProductID();
-            ?>
-            <tr style="padding:15px; text-align:center;">
-              <td>
-                <h2><?= $item->getProductName(); ?></h2>
-                <?php for($i = 1; $i <= 5; $i++) { ?>
-                  <?php $mailData['rRating'] = $i; ?>
-                  <?php $mailEncrypt = implode('|', array_map(function ($v, $k) { return sprintf("%s=%s", $k, $v); }, $mailData, array_keys($mailData)));?>
-                  <a href="<?= $url; ?>?rm=<?= rawurlencode($encryptor->encrypt($mailEncrypt)); ?>"><img src="<?= BASE_URL ; ?>/packages/community_store_reviews/css/images/star.png" alt="&#9733;" /></a>
-                <?php } ?>
-              </td>
-            </tr>
-          <?php } ?>
+            <?php foreach($orderItems as $item) { ?>
+                <?php $mailData['pID'] = $item->getProductID(); ?>
+                <tr style="padding:15px; text-align:center;">
+                    <td>
+                        <h2><?= $item->getProductName(); ?></h2>
+                        <?php for($i = 1; $i <= 5; $i++) { ?>
+                            <?php $mailData['rRating'] = $i; ?>
+                            <?php $mailEncrypt = implode('|', array_map(function ($v, $k) { return sprintf("%s=%s", $k, $v); }, $mailData, array_keys($mailData)));?>
+                            <a href="<?= $url; ?>?rm=<?= rawurlencode($encryptor->encrypt($mailEncrypt)); ?>">
+                                <img src="<?= BASE_URL ; ?>/packages/community_store_reviews/css/images/star.png" alt="&#9733;" />
+                            </a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
         <?php } ?>
       </tbody>
     </table>

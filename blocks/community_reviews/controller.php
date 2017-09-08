@@ -46,25 +46,27 @@ class Controller extends BlockController
 
         if ($this->filter == 'current' || $this->filter == 'page') {
             if($this->filter == 'page') {
-              $page = Page::getByID($this->filterCID);
+                $page = Page::getByID($this->filterCID);
             } else {
-              $page = Page::getCurrentPage();
+                $page = Page::getCurrentPage();
             }
+
             $reviews->setCID($page->getCollectionID());
             $reviews->setLocation('product');
         }
 
         if ($this->filter == 'current_children' || $this->filter == 'page_children') {
             if($this->filter == 'page_children') {
-              $page = Page::getByID($this->filterCID);
+                $page = Page::getByID($this->filterCID);
             } else {
-              $page = Page::getCurrentPage();
+                $page = Page::getCurrentPage();
             }
 
             $reviews->setCID($page->getCollectionID());
             if ($page) {
                 $reviews->setCIDs($page->getCollectionChildrenArray());
             }
+
             $this->set('showProduct', true);
             $reviews->setLocation('category');
         }
@@ -90,16 +92,17 @@ class Controller extends BlockController
         $cPage = Page::getCurrentPage();
         $product = StoreProduct::getByCollectionID($cPage->getCollectionID());
 
-        if(!empty($groupsShowForm) && !empty($userGroups) && !empty($product)) {
-          $this->set('product', $product);
-          foreach($userGroups as $groupID) {
-            $userGroup = Group::getByID($groupID);
-            $userGroupName = $userGroup->getGroupName();
-            if(in_array($userGroupName, $groupsShowForm)) {
-              $this->set('userShowForm', true);
-              break;
+        if (!empty($groupsShowForm) && !empty($userGroups) && !empty($product)) {
+            $this->set('product', $product);
+            foreach($userGroups as $groupID) {
+                $userGroup = Group::getByID($groupID);
+                $userGroupName = $userGroup->getGroupName();
+
+                if(in_array($userGroupName, $groupsShowForm)) {
+                    $this->set('userShowForm', true);
+                    break;
+                }
             }
-          }
         }
 
         $formTitle = Config::get('community_store_review.formTitle');
@@ -107,8 +110,8 @@ class Controller extends BlockController
         $formSubmitText = Config::get('community_store_review.formSubmitText');
         $this->set('formSubmitText', (!empty($formSubmitText) && trim($formSubmitText) != '' ? t($formSubmitText) : t('Submit')));
 
-        if(($u->isLoggedIn() && Config::get('community_store_review.captchaFormLoggedIn') == 1) ||
-          (!$u->isLoggedIn() && Config::get('community_store_review.captchaFormLoggedOut') == 1)) {
+        if (($u->isLoggedIn() && Config::get('community_store_review.captchaFormLoggedIn') == 1) ||
+            (!$u->isLoggedIn() && Config::get('community_store_review.captchaFormLoggedOut') == 1)) {
             $captcha = Loader::helper('validation/captcha');
             $this->set('captcha', $captcha);
         }
@@ -156,40 +159,39 @@ class Controller extends BlockController
 
             if (!$errors->has()) {
                 if($captcha->check() || $noCaptcha) {
-                  StoreReview::saveReview($args);
+                    StoreReview::saveReview($args);
 
-                  if($redirectCID = Config::get('community_store_review.formRedirectCID')) {
-                    $rPage = Page::getByID($redirectCID);
-                    $this->redirect($rPage->getCollectionLink());
-                  } else {
-                    $thanksMessage = Config::get('community_store_review.formThankyouMsg');
-                    if(empty($thanksMessage) && trim($thanksMessage) != '') {
-                      $thanksMessage = t('Thanks!');
+                    if($redirectCID = Config::get('community_store_review.formRedirectCID')) {
+                        $rPage = Page::getByID($redirectCID);
+                        $this->redirect($rPage->getCollectionLink());
+                    } else {
+                        $thanksMessage = Config::get('community_store_review.formThankyouMsg');
+                        if(empty($thanksMessage) && trim($thanksMessage) != '') {
+                            $thanksMessage = t('Thanks!');
+                        }
+
+                        $this->set('success', $thanksMessage);
                     }
-
-                    $this->set('success', $thanksMessage);
-                  }
                 } else {
-                  $errors = Core::make("helper/validation/error");
-                  $errors->add(t('Incorrect image validation code. Please check the image and re-enter the letters or numbers as necessary.'));
-                  $this->set('error', $errors->getList());
+                    $errors = Core::make("helper/validation/error");
+                    $errors->add(t('Incorrect image validation code. Please check the image and re-enter the letters or numbers as necessary.'));
+                    $this->set('error', $errors->getList());
                 }
             }
-
         }
     }
 
-    public function review_validate($args) {
+    public function review_validate($args)
+    {
         $e = Core::make("helper/validation/error");
-        $nh = Core::make("helper/number");
 
-        if(empty($args['rNickname']) || trim($args['rNickname']) == '') {
+        if (empty($args['rNickname']) || trim($args['rNickname']) == '') {
             $e->add(t('%s is required', t('Nickname')));
         }
-        if(empty($args['rTitle']) || trim($args['rTitle']) == '') {
+        if (empty($args['rTitle']) || trim($args['rTitle']) == '') {
             $e->add(t('%s is required', t('Title of the Review')));
         }
-        if(empty($args['rating']) || count($args['rating']) != count(StoreReviewRating::getAllRatings())) {
+        if (empty($args['rating']) || count($args['rating']) != count(StoreReviewRating::getAllRatings())) {
             $e->add(t('You have to fill in all the ratings'));
         }
 

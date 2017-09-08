@@ -85,24 +85,29 @@ class ReviewRatingValues
         $this->rating = $rating;
     }
 
-    public function getReviewID() {
-      return $this->rID;
+    public function getReviewID()
+    {
+        return $this->rID;
     }
 
-    public function getRatingID() {
-      return $this->raID;
+    public function getRatingID()
+    {
+        return $this->raID;
     }
 
-    public function getValue() {
-      return $this->rraValue;
+    public function getValue()
+    {
+        return $this->rraValue;
     }
 
-    public function getReview() {
-      return $this->review;
+    public function getReview()
+    {
+        return $this->review;
     }
 
-    public function getRating() {
-      return $this->rating;
+    public function getRating()
+    {
+        return $this->rating;
     }
 
     public static function getByID($rraID)
@@ -113,7 +118,8 @@ class ReviewRatingValues
         return $em->find(get_class(), $rraID);
     }
 
-    public static function getByReview($review) {
+    public static function getByReview($review)
+    {
         $db = \Database::connection();
         $rows = $db->GetAll("SELECT rraID FROM " . self::getTableName() . " WHERE rID = ?", $review->getID());
         $ratings = array();
@@ -126,30 +132,6 @@ class ReviewRatingValues
         return $ratings;
     }
 
-    public static function getAverageRatings() {
-      $db = \Database::connection();
-      $rows = $db->GetAll("SELECT raName, AVG(rraValue) AS avgValue FROM CommunityStoreReviewRatings rra INNER JOIN CommunityStoreRatings ra ON ra.raID = rra.raID GROUP BY rra.raID");
-
-      return $rows;
-    }
-
-    public static function getAverageApprovedRatings() {
-      $db = \Database::connection();
-      $rows = $db->GetAll("SELECT raName, AVG(rraValue) AS avgValue FROM CommunityStoreReviewRatings rra
-                          INNER JOIN CommunityStoreRatings ra ON ra.raID = rra.raID
-                          WHERE rra.rID IN
-                          (
-                          SELECT rsh.rID FROM CommunityStoreReviewStatusHistories rsh
-                          INNER JOIN CommunityStoreReviewStatuses rs ON rsh.rsID = rs.rsID
-                          WHERE rs.rsHandle = ?
-                          GROUP BY rsh.rID
-                          ORDER BY rsh.rshDate DESC
-                          )
-                          GROUP BY rra.raID", 'approved');
-
-      return $rows;
-    }
-
     public function save()
     {
         $em = \Database::connection()->getEntityManager();
@@ -157,27 +139,27 @@ class ReviewRatingValues
         $em->flush();
     }
 
-    public function saveRatingForReview($data) {
+    public function saveRatingForReview($data)
+    {
+        if ($data['rraID']) {
+            $reviewRating = self::getByID($data['rraID']);
+        } else {
+            $reviewRating = new self();
+        }
 
-      if ($data['rraID']) {
-          $reviewRating = self::getByID($data['rraID']);
-      } else {
-          $reviewRating = new self();
-      }
+        if($data['rID'] && $data['raID']) {
+            $review = StoreReview::getByID($data['rID']);
+            $rating = StoreReviewRating::getByID($data['raID']);
 
-      if($data['rID'] && $data['raID']) {
-          $review = StoreReview::getByID($data['rID']);
-          $rating = StoreReviewRating::getByID($data['raID']);
+            $reviewRating->setReview($review);
+            $reviewRating->setRating($rating);
+            $reviewRating->setValue($data['rraValue']);
 
-          $reviewRating->setReview($review);
-          $reviewRating->setRating($rating);
-          $reviewRating->setValue($data['rraValue']);
+            $reviewRating->save();
 
-          $reviewRating->save();
-
-          return $reviewRating;
-      } else {
-          return false;
-      }
+            return $reviewRating;
+        } else {
+            return false;
+        }
     }
 }

@@ -6,7 +6,6 @@ use Config;
 use UserInfo;
 use URL;
 use Job as AbstractJob;
-use Concrete\Core\Mail\Service as MailService;
 use \Concrete\Package\CommunityStoreReviews\Src\CommunityStore\Review\ReviewReminder as StoreReviewReminder;
 
 class CommunityStoreReviewReminder extends AbstractJob
@@ -26,53 +25,51 @@ class CommunityStoreReviewReminder extends AbstractJob
     public function run()
     {
         try {
-          $reminders = StoreReviewReminder::getByScheduledDate();
+            $reminders = StoreReviewReminder::getByScheduledDate();
 
-          if(!empty($reminders)) {
-            foreach($reminders as $reminder) {
-              $order = $reminder->getOrder();
+            if (!empty($reminders)) {
+                foreach ($reminders as $reminder) {
+                    $order = $reminder->getOrder();
 
-              $reviewReminderFrom = Config::get('community_store_review.reminderFrom');
-              $reviewReminderFromName = Config::get('community_store_review.reminderFromName');
-              if(empty($reviewReminderFrom) && trim($reviewReminderFrom) != '') {
-                $reviewReminderFrom = "store@" . $_SERVER['SERVER_NAME'];
-              }
+                    $reviewReminderFrom = Config::get('community_store_review.reminderFrom');
 
-              $customerID = $order->getCustomerID();
-              $customerInfo = UserInfo::getByID($customerID);
-              $reviewReminderTo = $customerInfo->getUserEmail();
+                    if (empty($reviewReminderFrom) && trim($reviewReminderFrom) != '') {
+                        $reviewReminderFrom = "store@" . $_SERVER['SERVER_NAME'];
+                    }
 
-              $siteName = Config::get('concrete.site');
-              $url = URL::to('/reviews');
-              $mailHash = Config::get('community_store_review.reminderHash');
+                    $customerID = $order->getCustomerID();
+                    $customerInfo = UserInfo::getByID($customerID);
+                    $reviewReminderTo = $customerInfo->getUserEmail();
 
-              $mailHeaderHtml = Config::get('community_store_review.reminderMailHeaderHtml');
-              $mailHeaderContent = Config::get('community_store_review.reminderMailHeaderContent');
-              $mailFooterContent = Config::get('community_store_review.reminderMailFooterContent');
-              $mailFooterHtml = Config::get('community_store_review.reminderMailFooterHtml');
+                    $siteName = Config::get('concrete.site');
+                    $url = URL::to('/reviews');
+                    $mailHash = Config::get('community_store_review.reminderHash');
 
-              $mh = new MailService();
+                    $mailHeaderHtml = Config::get('community_store_review.reminderMailHeaderHtml');
+                    $mailHeaderContent = Config::get('community_store_review.reminderMailHeaderContent');
+                    $mailFooterContent = Config::get('community_store_review.reminderMailFooterContent');
+                    $mailFooterHtml = Config::get('community_store_review.reminderMailFooterHtml');
 
-              $mh->from($reviewReminderFrom);
-              $mh->to($reviewReminderTo);
-              if($reviewReminderCc) {
-                $mh->cc($reviewReminderCc);
-              }
-              $mh->addParameter("order", $order);
-              $mh->addParameter("siteName", $siteName);
-              $mh->addParameter("url", $url);
-              $mh->addParameter("mailHash", $mailHash);
-              $mh->addParameter("mailHeaderHtml", $mailHeaderHtml);
-              $mh->addParameter("mailHeaderContent", $mailHeaderContent);
-              $mh->addParameter("mailFooterContent", $mailFooterContent);
-              $mh->addParameter("mailFooterHtml", $mailFooterHtml);
-              $mh->load("review_reminder", "community_store_reviews");
-              $mh->sendMail();
+                    $mh = Core::make('mail');
 
-              //$reminder->setSent(1);
-              //$reminder->save();
+                    $mh->from($reviewReminderFrom);
+                    $mh->to($reviewReminderTo);
+
+                    $mh->addParameter("order", $order);
+                    $mh->addParameter("siteName", $siteName);
+                    $mh->addParameter("url", $url);
+                    $mh->addParameter("mailHash", $mailHash);
+                    $mh->addParameter("mailHeaderHtml", $mailHeaderHtml);
+                    $mh->addParameter("mailHeaderContent", $mailHeaderContent);
+                    $mh->addParameter("mailFooterContent", $mailFooterContent);
+                    $mh->addParameter("mailFooterHtml", $mailFooterHtml);
+                    $mh->load("review_reminder", "community_store_reviews");
+                    $mh->sendMail();
+
+                    $reminder->setSent(1);
+                    $reminder->save();
+                }
             }
-          }
         } catch (\Exception $e) {
             throw $e;
         }

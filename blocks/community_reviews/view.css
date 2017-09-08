@@ -1,26 +1,26 @@
 .ccm-page .store-review {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 .ccm-page .store-review .store-review-nickname {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .ccm-page .store-review .store-review-date {
-  font-size: 12px;
-  font-weight: normal;
-  color: #999;
-  font-style: italic;
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+    font-style: italic;
 }
 
 .ccm-page .store-review .store-review-title {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .ccm-page .store-review .store-review-ratings .store-review-ratings-table tr td {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 .ccm-page .store-review .store-review-comment {
-  color: #999;
+    color: #999;
 }

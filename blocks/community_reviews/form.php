@@ -1,9 +1,7 @@
 <?php defined('C5_EXECUTE') or die("Access Denied."); ?>
 
 <div class="row">
-
     <div class="col-xs-6">
-
         <fieldset>
             <legend><?= t('Reviews') ?></legend>
 
@@ -19,11 +17,9 @@
             </div>
 
             <div class="form-group" id="pageselector">
-                <div
-                    class="form-group" <?= ($filter == 'page' || $filter == 'page_children' ? '' : 'style="display: none"'); ?> >
-                    <?php
-                    $ps = Core::make('helper/form/page_selector');
-                    echo $ps->selectPage('filterCID', ($filterCID > 0 ? $filterCID : false)); ?>
+                <div class="form-group" <?= ($filter == 'page' || $filter == 'page_children' ? '' : 'style="display: none"'); ?> >
+                    <?php $ps = Core::make('helper/form/page_selector'); ?>
+                    <?php echo $ps->selectPage('filterCID', ($filterCID > 0 ? $filterCID : false)); ?>
                 </div>
             </div>
 
@@ -40,14 +36,15 @@
                 <?= $form->checkbox('showForm', 1, $showForm); ?>
                 <?= $form->label('showForm', t('Show Form')); ?>
                 <div class="well well-sm">
-                  <small>
-                    <?= t('Review Form will only be displayed when the PageID is linked to a product.') ?>
-                    <?= t('Otherwise the customers will not be able to add a review.'); ?>
-                  </small>
+                    <small>
+                        <?= t('Review Form will only be displayed when the PageID is linked to a product.') ?>
+                        <?= t('Otherwise the customers will not be able to add a review.'); ?>
+                    </small>
                 </div>
             </div>
         </fieldset>
     </div>
+
     <div class="col-xs-6">
         <fieldset>
             <legend><?= t('Pagination and Display Options') ?></legend>
@@ -73,7 +70,6 @@
                 <?= $form->label('reviewsPerRow', t('Reviews per Row')); ?>
                 <?= $form->select('reviewsPerRow', array(1 => 1, 2 => 2, 3 => 3, 4 => 4), $reviewsPerRow ? $reviewsPerRow : 1); ?>
             </div>
-
         </fieldset>
     </div>
 </div>
@@ -82,9 +78,9 @@
     $(function(){
         $('#filter').change(function () {
             if ($(this).val() == 'page' || $(this).val() == 'page_children') {
-                $('#pageselector>div').show();
+                $('#pageselector > div').show();
             } else {
-                $('#pageselector>div').hide();
+                $('#pageselector > div').hide();
             }
         });
     });
